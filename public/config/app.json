@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "templates": "templates.json",
+  "sections": [
+    "prepare.json",
+    "configure.json",
+    "hp1102s.json"
+  ],
+  "navigation": [
+    {
+      "section": "prepare"
+    },
+    {
+      "name": "Конфиг ПК",
+      "code": "CONFIGURE",
+      "children": [
+        {
+          "section": "configure"
+        },
+        {
+          "name": "Настроить принтер",
+          "children": [
+            {
+              "name": "Hp 1102s",
+              "section": "hp1102s"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

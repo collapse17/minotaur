@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "id": "prepare",
+  "name": "Подготовить ПК",
+  "description": "Первичная подготовка нового рабочего места",
+  "scriptPath": "scripts/prepare/setup.ps1",
+  "code": "DEPLOY",
+  "symbol": "↗",
+  "wizard": [
+    {
+      "id": "computer",
+      "type": "form",
+      "label": "Компьютер",
+      "title": "Как называется компьютер?",
+      "description": "Укажите имя компьютера для запуска и отчёта.",
+      "fields": [
+        {
+          "id": "computerName",
+          "label": "Имя компьютера",
+          "type": "text",
+          "default": "WORKSTATION-01",
+          "required": true,
+          "maxLength": 15,
+          "pattern": "^(?![0-9]+$)[A-Za-z0-9](?:[A-Za-z0-9-]{0,13}[A-Za-z0-9])?$",
+          "error": "Имя: 1–15 латинских букв, цифр и дефисов; не только цифры."
+        }
+      ],
+      "buttons": {
+        "back": "← Назад",
+        "next": "Далее →",
+        "start": "Пробный запуск →",
+        "running": "Выполняется…",
+        "retry": "К плану",
+        "restart": "Новый запуск",
+        "json": "Скачать JSON",
+        "html": "Скачать HTML-отчёт"
+      }
+    },
+    {
+      "id": "profile",
+      "type": "profile",
+      "label": "Профиль",
+      "title": "Выберите профиль",
+      "buttons": {
+        "back": "← Назад",
+        "next": "Далее →",
+        "start": "Пробный запуск →",
+        "running": "Выполняется…",
+        "retry": "К плану",
+        "restart": "Новый запуск",
+        "json": "Скачать JSON",
+        "html": "Скачать HTML-отчёт"
+      }
+    },
+    {
+      "id": "review",
+      "type": "review",
+      "label": "Проверка",
+      "title": "Проверьте план",
+      "notice": "Пробный запуск: настройки Windows не изменяются.",
+      "buttons": {
+        "back": "← Назад",
+        "next": "Далее →",
+        "start": "Пробный запуск →",
+        "running": "Выполняется…",
+        "retry": "К плану",
+        "restart": "Новый запуск",
+        "json": "Скачать JSON",
+        "html": "Скачать HTML-отчёт"
+      }
+    },
+    {
+      "id": "execution",
+      "type": "execution",
+      "label": "Выполнение",
+      "title": "Выполнение профиля",
+      "buttons": {
+        "back": "← Назад",
+        "next": "Далее →",
+        "start": "Пробный запуск →",
+        "running": "Выполняется…",
+        "retry": "К плану",
+        "restart": "Новый запуск",
+        "json": "Скачать JSON",
+        "html": "Скачать HTML-отчёт"
+      }
+    },
+    {
+      "id": "result",
+      "type": "result",
+      "label": "Результат",
+      "title": "Пробный запуск завершён",
+      "errorTitle": "Запуск завершился с ошибкой",
+      "description": "Отчёт готов. Настройки Windows не изменялись.",
+      "buttons": {
+        "back": "← Назад",
+        "next": "Далее →",
+        "start": "Пробный запуск →",
+        "running": "Выполняется…",
+        "retry": "К плану",
+        "restart": "Новый запуск",
+        "json": "Скачать JSON",
+        "html": "Скачать HTML-отчёт"
+      }
+    }
+  ],
+  "rules": {
+    "requiredTemplates": [
+      "rename",
+      "inventory"
+    ],
+    "lastTemplate": "inventory"
+  },
+  "profiles": [
+    {
+      "id": "prepare-default",
+      "name": "Офис",
+      "description": "Базовая настройка рабочего места",
+      "steps": [
+        {
+          "id": "step-0",
+          "template": "rename",
+          "enabled": true,
+          "parameters": {
+            "name": "${run.computerName}"
+          },
+          "templateVersion": "1.0.0"
+        },
+        {
+          "id": "step-1",
+          "template": "user",
+          "enabled": true,
+          "parameters": {
+            "username": "operator",
+            "group": "Users"
+          },
+          "templateVersion": "1.0.0"
+        },
+        {
+          "id": "step-2",
+          "template": "install",
+          "enabled": true,
+          "parameters": {
+            "source": "assets/installers/app.msi",
+            "arguments": "/qn /norestart"
+          },
+          "templateVersion": "1.0.0"
+        },
+        {
+          "id": "step-3",
+          "template": "inventory",
+          "enabled": true,
+          "parameters": {
+            "formats": "json,html"
+          },
+          "templateVersion": "1.0.0"
+        }
+      ],
+      "schemaVersion": 1,
+      "version": "1.0.0",
+      "section": "prepare"
+    }
+  ]
+}

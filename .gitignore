@@ -1,0 +1,10 @@
+node_modules/
+dist/
+release/
+releases/*/
+releases/*.zip
+releases/*.tmp
+src-tauri/target/
+.npm-cache/
+
+logs/

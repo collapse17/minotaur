@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "templates": [
+    {
+      "id": "command",
+      "name": "Команда (без PowerShell)",
+      "version": "1.0.0",
+      "fields": {
+        "executable": "./dist/chrome.exe",
+        "arguments": "[\"-install\", \"silent\"]",
+        "workingDirectory": "."
+      }
+    },
+    {
+      "id": "rename",
+      "name": "Переименование компьютера",
+      "fields": {
+        "name": "${run.computerName}"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "user",
+      "name": "Локальный пользователь",
+      "fields": {
+        "username": "operator",
+        "group": "Users"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "install",
+      "name": "Установка программы",
+      "fields": {
+        "source": "assets/installers/app.msi",
+        "arguments": "/qn /norestart"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "registry",
+      "name": "Настройка реестра",
+      "fields": {
+        "path": "HKLM:\\Software\\Example",
+        "name": "Enabled",
+        "value": "1",
+        "type": "DWord"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "script",
+      "name": "PowerShell-сценарий",
+      "fields": {
+        "path": "scripts/setup.ps1",
+        "parameters": "{}"
+      },
+      "version": "1.0.0"
+    },
+    {
+      "id": "inventory",
+      "name": "Отчёт об оборудовании",
+      "fields": {
+        "formats": "json,html"
+      },
+      "version": "1.0.0"
+    }
+  ]
+}
