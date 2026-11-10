@@ -1,0 +1,12 @@
+{
+  "schemaVersion":1,
+  "version":"1.0.0",
+  "id":"hp1102s",
+  "path":["Конфиг ПК","Настройки принтеров","Драйверы","hp1102s"],
+  "wizard":[
+    {"id":"review","type":"review","title":"Установка драйвера hp1102s","label":"Проверка"},
+    {"id":"execution","type":"execution","title":"Установка","label":"Выполнение"},
+    {"id":"result","type":"result","title":"Результат установки","label":"Результат"}
+  ],
+  "steps":[{"id":"driver","template":"command","templateVersion":"1.0.0","enabled":true,"parameters":{"executable":"drivers/hp1102s/setup.exe","arguments":"[]","workingDirectory":"."}}]
+}

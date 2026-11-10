@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "templates": [
+    {"id":"command","name":"Команда","version":"1.0.0","fields":{"executable":"","arguments":"[]","workingDirectory":"."}},
+    {"id":"inventory","name":"Отчёт об оборудовании","version":"1.0.0","fields":{"formats":"json,html"}}
+  ],
+  "buttons":{"back":"Назад","next":"Далее","start":"Запустить","restart":"Начать заново"}
+}

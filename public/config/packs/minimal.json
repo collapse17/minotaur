@@ -1,0 +1,11 @@
+{
+  "schemaVersion":1,"version":"1.0.0","id":"minimal",
+  "path":["Диагностика","Сведения о компьютере"],
+  "name":"Сведения о компьютере",
+  "wizard":[
+    {"id":"review","type":"review","label":"Проверка","title":"Получение сведений о компьютере","description":"Сценарий собирает сведения об оборудовании и Windows."},
+    {"id":"execution","type":"execution","label":"Сбор сведений","title":"Собираем сведения"},
+    {"id":"result","type":"result","label":"Результат","title":"Результат диагностики"}
+  ],
+  "steps":[{"id":"inventory","template":"inventory","templateVersion":"1.0.0","enabled":true,"parameters":{"formats":"json,html"}}]
+}
